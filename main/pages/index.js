@@ -148,7 +148,7 @@ export default function Home({ allPostsData }) {
       <div className="container">
 
         <div className="row">
-          <div className="h2 text-center mt-5">雷切機預約</div>
+          <div className="h2 text-center mt-5">雷切機預約|Laser Booking</div>
         </div>
 
         <div className="row">
