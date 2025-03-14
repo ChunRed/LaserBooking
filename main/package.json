@@ -1,0 +1,22 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "start": "next start"
+  },
+  "dependencies": {
+    "date-fns": "^2.29.3",
+    "firebase": "^11.4.0",
+    "googleapis": "^146.0.0",
+    "gray-matter": "^4.0.3",
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "remark": "^14.0.2",
+    "remark-html": "^15.0.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
