@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "bootstrap": "^5.3.3",
     "date-fns": "^2.29.3",
     "firebase": "^11.4.0",
     "googleapis": "^146.0.0",
