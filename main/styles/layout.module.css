@@ -2,4 +2,12 @@
     border-top: solid;
     border-width: medium;
     color: rgb(139, 139, 139);
+    width: 75vw;
+    margin: auto;
+}
+
+
+.lu-font {
+    width: 75vw;
+    margin: auto;
 }
