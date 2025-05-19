@@ -254,13 +254,12 @@ export default function Home({ allPostsData }) {
               <option value="0519">5/19</option>
               <option value="0521">5/21</option>
               <option value="0523">5/23</option>
-              <option value="0526">5/36</option>
+              <option value="0526">5/26</option>
               <option value="0528">5/28</option>
               <option value="0530">5/30</option>
               <option value="0602">6/2</option>
               <option value="0604">6/4</option>
-              <option value="0607">6/7</option>
-              <option value="0609">6/9</option>
+              <option value="0607">6/6</option>
             </select>
           </div>
         </div>
