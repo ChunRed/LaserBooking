@@ -6,6 +6,7 @@ import layout from '../styles/layout.module.css';
 import { useState, useEffect } from "react";
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, child, get, set, push } from "firebase/database";
+import Image from 'next/image'
 
 import $ from "jquery";
 
@@ -286,6 +287,26 @@ export default function Home({ allPostsData }) {
             <ul id="messages"></ul>
           </div>
         </div>
+        
+        <div className="row mt-5 text-center h5">
+          <div className="col">管理員名單</div>
+        </div>
+
+        <div className="row mt-3  ">
+          <div className={layout.hrline}></div>
+        </div>
+        
+
+        <div className="row mt-3  ">
+          <Image
+            src="/images/list.png"
+            alt="管理員名單"
+            layout="responsive"
+            width={1022}   // 圖片原始寬度
+            height={472}   // 圖片原始高度
+          />
+        </div>
+
 
 
         <div className="row mt-5 text-center mb-5">
