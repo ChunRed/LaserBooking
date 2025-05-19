@@ -62,6 +62,12 @@ export default function Home({ allPostsData }) {
 
   //MARK:WRITE DATA
   function writeUserData(ID, Name, Date, Time) {
+    const today = new globalThis.Date()
+    const year = today.getFullYear()
+    const month = today.getMonth() + 1      //記得 +1，因為 getMonth() 是 0~11）
+    const day = today.getDate()
+
+
 
     get(child(dbRef, '/data')).then((snapshot) => {
       if (snapshot.exists()) {
@@ -72,23 +78,28 @@ export default function Home({ allPostsData }) {
         //傳送條件
         if (data_flag != true) {
 
-          if (
-            ID != "" &&
-            Name != "" &&
-            Date != "" &&
-            Time != "" &&
-            ID.length == 9
-          ) {
-            set(ref(db, '/data/' + Date + "|" + Time), {
-              ID: ID, 
-              Name: Name, 
-              Data: Date, 
-              Time: Time,
-            });
-            alert('傳送成功')
+          if (parseInt(day) == parseInt(Date[2] + Date[3])) {
+            alert('請提前一天預約')
           }
           else {
-            alert('數值有誤，請檢查有無確實填寫資訊')
+            if (
+              ID != "" &&
+              Name != "" &&
+              Date != "" &&
+              Time != "" &&
+              ID.length == 9
+            ) {
+              set(ref(db, '/data/' + Date + "|" + Time), {
+                ID: ID,
+                Name: Name,
+                Data: Date,
+                Time: Time,
+              });
+              alert('傳送成功')
+            }
+            else {
+              alert('數值有誤，請檢查有無確實填寫資訊')
+            }
           }
         }
         else {
@@ -122,16 +133,16 @@ export default function Home({ allPostsData }) {
       for (let i = 0; i < time.length; i++) {
         if (snapshot.exists()) {
           let data_flag = snapshot.hasChild(value + "|" + time[i]);
-          
+
           //console.log(value + "|" + time[i]);
 
-          if (data_flag){
+          if (data_flag) {
             ans[i] = 1;
             get(child(dbRef, '/data/' + value + "|" + time[i])).then((snapshot) => {
               let data_message = snapshot.val();
               $('#messages').append($('<li>').text(data_message.Time + " : " + data_message.ID + " : " + data_message.Name));
             });
-            
+
           }
           else ans[i] = 0;
 
@@ -163,7 +174,7 @@ export default function Home({ allPostsData }) {
 
   return (
     <main>
-      
+
 
       <div className="container">
 
@@ -179,12 +190,12 @@ export default function Home({ allPostsData }) {
 
         <div className="row mt-5 lu-font justify-content-center">
           <div className="col-xl-10 col-lg-10 col-md-10 col-sm-10">
-          <li>雷切機使用時間為晚上 19:00-21:00</li>
-          <li>請自備隨身碟</li>
-          <li>預約者須繳納押金</li>
-          <li>結束請帶走個人物品＆協助清潔工具設備</li>
-          <li>雷切機管理員將協助您操作設備</li>
-          <li>預約未到者將扣押金 50 $</li>
+            <li>雷切機使用時間為晚上 19:00-21:00</li>
+            <li>請自備隨身碟</li>
+            <li>預約者須繳納押金</li>
+            <li>結束請帶走個人物品＆協助清潔工具設備</li>
+            <li>雷切機管理員將協助您操作設備</li>
+            <li>預約未到者將扣押金 50 $</li>
           </div>
         </div>
 
@@ -245,7 +256,7 @@ export default function Home({ allPostsData }) {
               <option value="0523">5/23</option>
               <option value="0526">5/36</option>
               <option value="0528">5/28</option>
-              <option value="0530">530</option>
+              <option value="0530">5/30</option>
               <option value="0602">6/2</option>
               <option value="0604">6/4</option>
               <option value="0607">6/7</option>
@@ -270,9 +281,9 @@ export default function Home({ allPostsData }) {
         <div className="row mt-5 mb-3 justify-content-center">
           <button className="w-75 btn btn-outline-secondary" type="button" onClick={Send}>傳送｜Send</button>
         </div>
-        
-        
-        
+
+
+
 
         <div className="row mt-5 text-center h5">
           <div className="col">登記資料</div>
@@ -287,7 +298,7 @@ export default function Home({ allPostsData }) {
             <ul id="messages"></ul>
           </div>
         </div>
-        
+
         <div className="row mt-5 text-center h5">
           <div className="col">管理員名單</div>
         </div>
@@ -295,7 +306,7 @@ export default function Home({ allPostsData }) {
         <div className="row mt-3  ">
           <div className={layout.hrline}></div>
         </div>
-        
+
 
         <div className="row mt-3  ">
           <Image
@@ -310,14 +321,14 @@ export default function Home({ allPostsData }) {
 
 
         <div className="row mt-5 text-center mb-5">
-            <div className="col">2303.5 Maker Lab</div>
+          <div className="col">2303.5 Maker Lab</div>
         </div>
 
 
 
       </div>
 
-      
+
 
     </main>
   );
