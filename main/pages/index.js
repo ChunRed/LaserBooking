@@ -60,13 +60,14 @@ export default function Home({ allPostsData }) {
     });
   }
 
+
+
   //MARK:WRITE DATA
   function writeUserData(ID, Name, Date, Time) {
     const today = new globalThis.Date()
     const year = today.getFullYear()
     const month = today.getMonth() + 1      //記得 +1，因為 getMonth() 是 0~11）
     const day = today.getDate()
-
 
 
     get(child(dbRef, '/data')).then((snapshot) => {
@@ -123,6 +124,8 @@ export default function Home({ allPostsData }) {
     writeUserData(ID, Name, Date, Time);
   }
 
+
+
   function Check(value) {
     let e = document.querySelector("#messages");
     e.innerHTML = "";
@@ -170,6 +173,18 @@ export default function Home({ allPostsData }) {
     });
 
   }
+
+
+
+
+
+
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+  //  HTML Part  //////  HTML Part  ///////  HTML Part  ///////  HTML Part  
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+  
 
 
   return (
@@ -226,40 +241,32 @@ export default function Home({ allPostsData }) {
               Check(e.target.value);
             }}>
               <option value="DEFAULT" disabled>選擇日期｜Select date</option>
-              <option value="0321">3/21</option>
-              <option value="0324">3/24</option>
-              <option value="0326">3/26</option>
-              <option value="0328">3/28</option>
-              <option value="0331">3/31</option>
-              <option value="0402">4/2</option>
-              <option value="0404">4/4</option>
-              <option value="0407">4/7</option>
-              <option value="0409">4/9</option>
-              <option value="0411">4/11</option>
-              <option value="0414">4/14</option>
-              <option value="0416">4/16</option>
-              <option value="0418">4/18</option>
-              <option value="0421">4/21</option>
-              <option value="0423">4/23</option>
-              <option value="0425">4/25</option>
-              <option value="0428">4/28</option>
-              <option value="0430">4/30</option>
-              <option value="0502">5/2</option>
-              <option value="0505">5/5</option>
-              <option value="0507">5/7</option>
-              <option value="0509">5/9</option>
-              <option value="0512">5/12</option>
-              <option value="0514">5/14</option>
-              <option value="0516">5/16</option>
-              <option value="0519">5/19</option>
-              <option value="0521">5/21</option>
-              <option value="0523">5/23</option>
-              <option value="0526">5/26</option>
-              <option value="0528">5/28</option>
-              <option value="0530">5/30</option>
-              <option value="0602">6/2</option>
-              <option value="0604">6/4</option>
-              <option value="0607">6/6</option>
+              <option value="1013">3/21</option>
+              <option value="1015">3/24</option>
+              <option value="1017">3/26</option>
+              <option value="1020">3/28</option>
+              <option value="1022">3/31</option>
+              <option value="1027">4/4</option>
+              <option value="1029">4/7</option>
+              <option value="1031">4/9</option>
+              <option value="1103">4/11</option>
+              <option value="1105">4/14</option>
+              <option value="1107">4/16</option>
+              <option value="1110">4/18</option>
+              <option value="1112">4/21</option>
+              <option value="1114">4/23</option>
+              <option value="1117">4/25</option>
+              <option value="1119">4/28</option>
+              <option value="1121">4/30</option>
+              <option value="1124">5/2</option>
+              <option value="1126">5/5</option>
+              <option value="1128">5/7</option>
+              <option value="1201">5/9</option>
+              <option value="1203">5/12</option>
+              <option value="1205">5/14</option>
+              <option value="1208">5/16</option>
+              <option value="1210">5/19</option>
+              
             </select>
           </div>
         </div>
@@ -298,7 +305,7 @@ export default function Home({ allPostsData }) {
           </div>
         </div>
 
-        <div className="row mt-5 text-center h5">
+        {/* <div className="row mt-5 text-center h5">
           <div className="col">管理員名單</div>
         </div>
 
@@ -315,7 +322,7 @@ export default function Home({ allPostsData }) {
             width={1022}   // 圖片原始寬度
             height={472}   // 圖片原始高度
           />
-        </div>
+        </div> */}
 
 
 
