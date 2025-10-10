@@ -2,6 +2,7 @@ import Head from 'next/head';
 
 import "bootstrap/dist/css/bootstrap.css";
 import layout from '../styles/layout.module.css';
+import AutoShowModal from '../components/AutoShowModal'
 
 import { useState, useEffect } from "react";
 import { initializeApp } from "firebase/app";
@@ -184,7 +185,7 @@ export default function Home({ allPostsData }) {
   //  HTML Part  //////  HTML Part  ///////  HTML Part  ///////  HTML Part  
   ////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////
-  
+
 
 
   return (
@@ -194,25 +195,14 @@ export default function Home({ allPostsData }) {
       <div className="container">
 
         <div className="row">
-          <div className="h2 text-center mt-5 mb-5">雷切機預約|Laser Booking</div>
+          <AutoShowModal /> 
         </div>
 
-        <div className="row text-center mt-3 h5">
-          <div className="col">
-            預約須知 ( 須至少一天前預約 )
-          </div>
-        </div>
 
-        <div className="row mt-5 lu-font justify-content-center">
-          <div className="col-xl-10 col-lg-10 col-md-10 col-sm-10">
-            <li>雷切機使用時間為晚上 19:00-21:00</li>
-            <li>請自備隨身碟</li>
-            <li>預約者須繳納押金</li>
-            <li>結束請帶走個人物品＆協助清潔工具設備</li>
-            <li>雷切機管理員將協助您操作設備</li>
-            <li>預約未到者將扣押金 50 $</li>
-          </div>
+        <div className="row">
+          <div className="h2 text-center mt-5 ">雷切機預約|Laser Booking</div>
         </div>
+        
 
 
         <div className="row mt-5 justify-content-center">
@@ -241,32 +231,32 @@ export default function Home({ allPostsData }) {
               Check(e.target.value);
             }}>
               <option value="DEFAULT" disabled>選擇日期｜Select date</option>
-              <option value="1013">3/21</option>
-              <option value="1015">3/24</option>
-              <option value="1017">3/26</option>
-              <option value="1020">3/28</option>
-              <option value="1022">3/31</option>
-              <option value="1027">4/4</option>
-              <option value="1029">4/7</option>
-              <option value="1031">4/9</option>
-              <option value="1103">4/11</option>
-              <option value="1105">4/14</option>
-              <option value="1107">4/16</option>
-              <option value="1110">4/18</option>
-              <option value="1112">4/21</option>
-              <option value="1114">4/23</option>
-              <option value="1117">4/25</option>
-              <option value="1119">4/28</option>
-              <option value="1121">4/30</option>
-              <option value="1124">5/2</option>
-              <option value="1126">5/5</option>
-              <option value="1128">5/7</option>
-              <option value="1201">5/9</option>
-              <option value="1203">5/12</option>
-              <option value="1205">5/14</option>
-              <option value="1208">5/16</option>
-              <option value="1210">5/19</option>
-              
+              <option value="1013">10/13</option>
+              <option value="1015">10/15</option>
+              <option value="1017">10/17</option>
+              <option value="1020">10/20</option>
+              <option value="1022">10/22</option>
+              <option value="1027">10/27</option>
+              <option value="1029">10/29</option>
+              <option value="1031">10/31</option>
+              <option value="1103">11/3</option>
+              <option value="1105">11/5</option>
+              <option value="1107">11/7</option>
+              <option value="1110">11/10</option>
+              <option value="1112">11/12</option>
+              <option value="1114">11/14</option>
+              <option value="1117">11/17</option>
+              <option value="1119">11/19</option>
+              <option value="1121">11/21</option>
+              <option value="1124">11/24</option>
+              <option value="1126">11/26</option>
+              <option value="1128">11/28</option>
+              <option value="1201">12/1</option>
+              <option value="1203">12/3</option>
+              <option value="1205">12/5</option>
+              <option value="1208">12/8</option>
+              <option value="1210">12/10</option>
+
             </select>
           </div>
         </div>
