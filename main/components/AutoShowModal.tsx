@@ -1,5 +1,8 @@
 // components/AutoShowModal.tsx
 import { useEffect } from 'react'
+import Image from 'next/image'
+
+import layout from '../styles/layout.module.css';
 
 export default function AutoShowModal() {
     useEffect(() => {
@@ -35,10 +38,54 @@ export default function AutoShowModal() {
                                 <li>預約未到者將扣押金 50 $</li>
                             </div>
                         </div>
+
+
+
+                        <div className="row mt-4 justify-content-center">
+                            <div className="col">
+                                <div className={layout.hrline}></div>
+                            </div>
+                        </div>
+
+                        <div className="row mt-4 lu-font justify-content-center">
+                            <div className=" text-center col-xl-10 col-lg-10 col-md-10 col-sm-10">
+                                需取消預約請line聯絡管理員
+                            </div>
+                        </div>
+
+                        <div className="row mt-3 d-flex justify-content-center">
+                            <Image
+                                src="/images/QRcode.png"
+                                alt="管理員名單"
+                                width={1022}
+                                height={472}
+                                style={{
+                                    width: '200px',   // 想顯示的寬度
+                                    height: 'auto',   // 自動保持比例
+                                }}
+                            />
+                        </div>
+                        {/* 
+https://ipta.nthu.edu.tw/?p=10559 */}
+
                     </div>
-                    <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <div className="modal-footer d-flex gap-3">
+                        <button
+                            type="button"
+                            className="btn btn-secondary flex-fill"
+                            onClick={() => window.open('https://ipta.nthu.edu.tw/?p=10559', '_blank')}
+                        >
+                            詳閱公約
+                        </button>
+                        <button
+                            type="button"
+                            className="btn btn-secondary flex-fill"
+                            data-bs-dismiss="modal"
+                        >
+                            Close
+                        </button>
                     </div>
+
                 </div>
             </div>
         </div>

@@ -195,17 +195,31 @@ export default function Home({ allPostsData }) {
       <div className="container">
 
         <div className="row">
-          <AutoShowModal /> 
+          <AutoShowModal />
         </div>
 
+
+        {/* <div className="row">
+          <div className="h2 text-center mt-5 ">雷切機預約|Laser Booking</div>
+        </div> */}
 
         <div className="row">
-          <div className="h2 text-center mt-5 ">雷切機預約|Laser Booking</div>
+          <div className="text-center">
+            <video
+              src="/images/LaserBorder.mp4"
+              
+              autoPlay
+              loop
+              muted
+              playsInline
+              style={{ borderRadius: '10px', maxWidth: '100%' }}
+            />
+          </div>
         </div>
-        
 
 
-        <div className="row mt-5 justify-content-center">
+
+        <div className="row mt-1 justify-content-center">
           <div className="col">
             <div className={layout.hrline}></div>
           </div>

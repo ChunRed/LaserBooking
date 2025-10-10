@@ -1,8 +1,8 @@
 .hrline {
     border-top: solid;
-    border-width: medium;
+    border-width: 2px;
     color: rgb(139, 139, 139);
-    width: 75vw;
+    width: 90vw;
     margin: auto;
 }
 
