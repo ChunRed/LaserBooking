@@ -270,6 +270,13 @@ export default function Home({ allPostsData }) {
               <option value="1205">12/5</option>
               <option value="1208">12/8</option>
               <option value="1210">12/10</option>
+              <option value="1212">12/12</option>
+              <option value="1215">12/15</option>
+              <option value="1217">12/17</option>
+              <option value="1219">12/19</option>
+              <option value="1222">12/22</option>
+              <option value="1224">12/24</option>
+              <option value="1226">12/26</option>
 
             </select>
           </div>
