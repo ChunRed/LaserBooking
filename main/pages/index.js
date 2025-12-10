@@ -245,26 +245,6 @@ export default function Home({ allPostsData }) {
               Check(e.target.value);
             }}>
               <option value="DEFAULT" disabled>選擇日期｜Select date</option>
-              <option value="1013">10/13</option>
-              <option value="1015">10/15</option>
-              <option value="1017">10/17</option>
-              <option value="1020">10/20</option>
-              <option value="1022">10/22</option>
-              <option value="1027">10/27</option>
-              <option value="1029">10/29</option>
-              <option value="1031">10/31</option>
-              <option value="1103">11/3</option>
-              <option value="1105">11/5</option>
-              <option value="1107">11/7</option>
-              <option value="1110">11/10</option>
-              <option value="1112">11/12</option>
-              <option value="1114">11/14</option>
-              <option value="1117">11/17</option>
-              <option value="1119">11/19</option>
-              <option value="1121">11/21</option>
-              <option value="1124">11/24</option>
-              <option value="1126">11/26</option>
-              <option value="1128">11/28</option>
               <option value="1201">12/1</option>
               <option value="1203">12/3</option>
               <option value="1205">12/5</option>
