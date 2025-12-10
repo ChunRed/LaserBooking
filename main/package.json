@@ -12,7 +12,7 @@
     "googleapis": "^146.0.0",
     "gray-matter": "^4.0.3",
     "jquery": "^3.7.1",
-    "next": "latest",
+    "next": "15.2.6",
     "react": "latest",
     "react-dom": "latest",
     "remark": "^14.0.2",
