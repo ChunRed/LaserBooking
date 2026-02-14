@@ -3,6 +3,7 @@ import Head from 'next/head';
 import "bootstrap/dist/css/bootstrap.css";
 import layout from '../styles/layout.module.css';
 import AutoShowModal from '../components/AutoShowModal'
+import dateOptions from '../data/dates.json';
 
 import { useState, useEffect } from "react";
 import { initializeApp } from "firebase/app";
@@ -96,8 +97,10 @@ export default function Home({ allPostsData }) {
                 Name: Name,
                 Data: Date,
                 Time: Time,
+              }).then(() => {
+                alert('傳送成功');
+                Check(Date);
               });
-              alert('傳送成功')
             }
             else {
               alert('數值有誤，請檢查有無確實填寫資訊')
@@ -207,7 +210,7 @@ export default function Home({ allPostsData }) {
           <div className="text-center">
             <video
               src="/images/LaserBorder.mp4"
-              
+
               autoPlay
               loop
               muted
@@ -245,18 +248,13 @@ export default function Home({ allPostsData }) {
               Check(e.target.value);
             }}>
               <option value="DEFAULT" disabled>選擇日期｜Select date</option>
-              <option value="1201">12/1</option>
-              <option value="1203">12/3</option>
-              <option value="1205">12/5</option>
-              <option value="1208">12/8</option>
-              <option value="1210">12/10</option>
-              <option value="1212">12/12</option>
-              <option value="1215">12/15</option>
-              <option value="1217">12/17</option>
-              <option value="1219">12/19</option>
-              <option value="1222">12/22</option>
-              <option value="1224">12/24</option>
-              <option value="1226">12/26</option>
+              {dateOptions.map((date) => {
+                const month = parseInt(date.substring(0, 2), 10);
+                const day = parseInt(date.substring(2, 4), 10);
+                return (
+                  <option key={date} value={date}>{`${month}/${day}`}</option>
+                );
+              })}
 
             </select>
           </div>
