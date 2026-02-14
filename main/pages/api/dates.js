@@ -15,33 +15,18 @@ export default function handler(req, res) {
         }
     } else if (req.method === 'POST') {
         try {
-            let newDates = req.body;
-
-            // Handle potential string body if not parsed automatically
-            if (typeof newDates === 'string') {
-                try {
-                    newDates = JSON.parse(newDates);
-                } catch (e) {
-                    return res.status(400).json({ message: 'Invalid JSON body' });
-                }
-            }
+            const newDates = req.body;
 
             // Basic validation: ensure it's an array
             if (!Array.isArray(newDates)) {
-                return res.status(400).json({ message: `Invalid data format. Expected an array. Received: ${typeof newDates}` });
-            }
-
-            // Ensure directory exists
-            const dir = path.dirname(filePath);
-            if (!fs.existsSync(dir)) {
-                fs.mkdirSync(dir, { recursive: true });
+                return res.status(400).json({ message: 'Invalid data format. Expected an array.' });
             }
 
             fs.writeFileSync(filePath, JSON.stringify(newDates, null, 2), 'utf8');
             res.status(200).json({ message: 'Dates updated successfully' });
         } catch (error) {
             console.error(error);
-            res.status(500).json({ message: `Error writing dates file: ${error.message}` });
+            res.status(500).json({ message: 'Error writing dates file' });
         }
     } else {
         res.setHeader('Allow', ['GET', 'POST']);

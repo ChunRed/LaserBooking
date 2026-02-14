@@ -3,11 +3,11 @@ import Head from 'next/head';
 import "bootstrap/dist/css/bootstrap.css";
 import layout from '../styles/layout.module.css';
 import AutoShowModal from '../components/AutoShowModal'
-import dateOptions from '../data/dates.json';
+import initialDateOptions from '../data/dates.json';
 import adminConfig from '../data/admin.json';
 
 import { useState, useEffect } from "react";
-import { initializeApp } from "firebase/app";
+import { initializeApp, getApps } from "firebase/app";
 import { getDatabase, ref, child, get, set, push } from "firebase/database";
 import Image from 'next/image'
 
@@ -18,13 +18,13 @@ export default function Home({ allPostsData }) {
   const [Name, setName] = useState("");
   const [Date, setDate] = useState("");
   const [Time, setTime] = useState("");
+  const [dateOptions, setDateOptions] = useState(initialDateOptions || []);
 
   const [TimeText, setTimeText] = useState(['', '', '', '']);
   const schedule = ['19:00-20:00 序位1', '19:00-20:00 序位2', '20:00-21:00 序位1', '20:00-21:00 序位2'];
 
   let firebase_data_length = 0;
   let time = ['19:00-20:00-1', '19:00-20:00-2', '20:00-21:00-1', '20:00-21:00-2'];
-
 
 
   //MARK:FIREBASE INIT
@@ -37,9 +37,32 @@ export default function Home({ allPostsData }) {
     appId: "1:740873118131:web:f99b46a7cd9d729a622bc6",
     measurementId: "G-05P7LBNJC6"
   };
-  const app = initializeApp(firebaseConfig);
+
+  // Safe initialization
+  let app;
+  if (getApps().length === 0) {
+    app = initializeApp(firebaseConfig);
+  }
   const dbRef = ref(getDatabase());
   const db = getDatabase();
+
+
+  //MARK:FETCH DATES
+  useEffect(() => {
+    // Ensure apps are initialized before using database
+    if (getApps().length === 0) {
+      initializeApp(firebaseConfig);
+    }
+
+    const dbRef = ref(getDatabase());
+    get(child(dbRef, 'availableDates')).then((snapshot) => {
+      if (snapshot.exists()) {
+        setDateOptions(snapshot.val());
+      }
+    }).catch((error) => {
+      console.error("Error fetching dates:", error);
+    });
+  }, []);
 
 
 

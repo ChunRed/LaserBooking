@@ -3,7 +3,8 @@ import Head from 'next/head';
 import "bootstrap/dist/css/bootstrap.css";
 // Firebase imports
 import { initializeApp, getApps } from "firebase/app";
-import { getDatabase, ref, child, get, remove } from "firebase/database";
+import defaultDates from '../data/dates.json';
+import { getDatabase, ref, child, get, remove, set } from "firebase/database";
 
 const firebaseConfig = {
     apiKey: "AIzaSyCI7IR5CAlakx65kVZ1YHKPeBL9F8BxIrg",
@@ -45,12 +46,14 @@ export default function ManageDates() {
 
     const fetchDates = async () => {
         try {
-            const res = await fetch('/api/dates');
-            if (res.ok) {
-                const data = await res.json();
-                setDates(data);
+            const dbRef = ref(getDatabase());
+            const snapshot = await get(child(dbRef, 'availableDates'));
+            if (snapshot.exists()) {
+                setDates(snapshot.val());
             } else {
-                setMessage('Failed to load dates');
+                // Determine fallback: use local JSON file if Firebase is empty (initial migration)
+                console.log("No dates in Firebase, using default from dates.json");
+                setDates(defaultDates || []);
             }
         } catch (error) {
             console.error(error);
@@ -92,27 +95,12 @@ export default function ManageDates() {
     const saveDates = async () => {
         setMessage('Applying changes...');
         try {
-            const res = await fetch('/api/dates', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(dates),
-            });
-
-            if (res.ok) {
-                setMessage('更新成功！ Dates updated successfully.');
-            } else {
-                try {
-                    const errorData = await res.json();
-                    setMessage(`Update failed: ${errorData.message}`);
-                } catch (e) {
-                    setMessage(`Update failed: ${res.status} ${res.statusText}`);
-                }
-            }
+            const db = getDatabase();
+            await set(ref(db, 'availableDates'), dates);
+            setMessage('更新成功！ Dates updated successfully (saved to Firebase).');
         } catch (error) {
             console.error(error);
-            setMessage('Error saving dates');
+            setMessage(`Update failed: ${error.message}`);
         }
     };
 
