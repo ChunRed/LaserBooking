@@ -103,7 +103,12 @@ export default function ManageDates() {
             if (res.ok) {
                 setMessage('更新成功！ Dates updated successfully.');
             } else {
-                setMessage('Update failed.');
+                try {
+                    const errorData = await res.json();
+                    setMessage(`Update failed: ${errorData.message}`);
+                } catch (e) {
+                    setMessage(`Update failed: ${res.status} ${res.statusText}`);
+                }
             }
         } catch (error) {
             console.error(error);
