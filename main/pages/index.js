@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import layout from '../styles/layout.module.css';
 import AutoShowModal from '../components/AutoShowModal'
 import dateOptions from '../data/dates.json';
+import adminConfig from '../data/admin.json';
 
 import { useState, useEffect } from "react";
 import { initializeApp } from "firebase/app";
@@ -178,6 +179,15 @@ export default function Home({ allPostsData }) {
 
   }
 
+  function AdminLogin() {
+    const password = prompt("請輸入管理員密碼 / Enter Admin Password:");
+    if (password === adminConfig.password) {
+      window.location.href = '/manage-dates';
+    } else if (password !== null && password !== "") {
+      alert("密碼錯誤 / Incorrect Password");
+    }
+  }
+
 
 
 
@@ -315,8 +325,12 @@ export default function Home({ allPostsData }) {
 
 
 
+
         <div className="row mt-5 text-center mb-5">
-          <div className="col">2303.5 Maker Lab</div>
+          <div className="col">
+            2303.5 Maker Lab
+            <button className="btn btn-sm btn-link text-decoration-none text-muted" onClick={AdminLogin}>Backend</button>
+          </div>
         </div>
 
 
